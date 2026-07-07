@@ -2,8 +2,8 @@ import axios from "axios"
 
 
 const api = axios.create({
-    baseURL: "http://localhost:3000",
-    withCredentials: true,            // If sending req to backend, server get access to save or read someting on to cookie.
+    baseURL: import.meta.env.VITE_API_URL,
+    withCredentials: true, // If sending req to backend, server get access to save or read someting on to cookie.
 })
 
 
