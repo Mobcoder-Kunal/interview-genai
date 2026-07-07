@@ -198,7 +198,11 @@ async function generatePdfFromHtml(htmlContent) {
     }
 
     const browser = await puppeteer.launch({
-        headless: true
+        headless: true,
+        args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox"
+        ]
     });
 
     try {
