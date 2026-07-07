@@ -1,7 +1,5 @@
 // In app.js we generally create the instance of app and use middlewares and routes
 
-import "dotenv/config";
-
 import cors from "cors";
 import express from "express";
 import cookieParser from "cookie-parser";
@@ -15,7 +13,7 @@ app.use(cookieParser());
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        process.env.FRONTEND_URL,
+        "https://interview-genai-gray.vercel.app",
     ],
     credentials: true
 }));
