@@ -1,5 +1,7 @@
 // In app.js we generally create the instance of app and use middlewares and routes
 
+import "dotenv/config";
+
 import cors from "cors";
 import express from "express";
 import cookieParser from "cookie-parser";
