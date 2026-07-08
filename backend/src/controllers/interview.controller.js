@@ -43,9 +43,20 @@ async function generateInterviewReportController(req, res) {
         });
 
     } catch (error) {
-        console.error(error);
-        return res.status(error.statusCode || 500).json({
-            message: error.message || "Failed"
+        console.error("Interview generation failed:", error);
+
+        const status =
+            error.status ||
+            error.statusCode ||
+            error.code ||
+            500;
+
+        return res.status(status).json({
+            success: false,
+            message:
+                status === 503
+                    ? "Gemini is currently busy. Please try again in a minute."
+                    : error.message || "Failed to generate interview report.",
         });
     }
 }
