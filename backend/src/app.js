@@ -8,8 +8,7 @@ import interviewRouter from "./routes/interview.routes.js";
 
 const app = express()
 
-app.use(express.json());
-app.use(cookieParser());
+
 app.use(cors({
     origin: [
         "http://localhost:5173",
@@ -17,11 +16,29 @@ app.use(cors({
     ],
     credentials: true
 }));
+app.use(cookieParser());
+app.use(express.json());
+
+
 
 app.use("/api/auth", authRouter)
 app.use("/api/interview", interviewRouter)
 
 export default app
+
+
+
+// Order matters -----------> Should be in this order
+
+// app.use(cors({
+//     origin: process.env.FRONTEND_URL,
+//     credentials: true,
+// }));
+
+// app.use(cookieParser());
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 
 // JSDoc is a markup language used to annotate JavaScript source code files. By adding specially formatted comments directly into your code, you can use the JSDoc tool to automatically generate a static HTML documentation website. 
